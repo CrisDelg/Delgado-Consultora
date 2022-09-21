@@ -1,0 +1,17 @@
+{% extends "App_Auditorias/principal.html" %}
+
+{% load static %}
+
+
+{% block titulo %}
+<h1 class="text-white font-weight-bold">CONTÁCTANOS</h1>
+
+<form action="{% url 'contactanos' %}" method="POST"> {% csrf_token %}
+
+    <p>Nombre: <input type="text" name="nombre"><p>
+    <p>Teléfono: <input type="number" name="telefono"><p>
+    <p>Email: <input type="email" name="email"><p>
+    <input type="submit" value="Enviar">
+</form>
+{% endblock %}
+

@@ -1,0 +1,29 @@
+{% extends "App_Auditorias/principal.html" %}
+
+{% load static %}
+
+
+{% block titulo %}
+<h1 class="text-white font-weight-bold">NUESTROS CLIENTES</h1>
+
+
+<form action="{% url 'clientes' %}" method="POST"> {% csrf_token %}
+    
+    <p>Nombre: <input type="text" name="nombre"></p>
+    
+    <input type="submit" value="Enviar">
+</form>
+
+<a class="nav-link" href="{% url 'clientes' %}">Agregar Clientes</a>
+
+{% if clientes %}
+<ul>
+    {% for c in clientes %}
+         <h4>{{ c.nombre }}, {{ c.categoria }}</h4>
+         <a class="nav-link" href="{% url 'eliminarClientes' c.id %}">Eliminar</a>
+         <br>
+    {% endfor %}     
+
+</ul>
+
+{% endblock %}
